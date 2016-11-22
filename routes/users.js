@@ -53,13 +53,13 @@ app.post('/api/user/add',function(req,res,next){
 
 	user.save(function(err,user){
 		if(err) return next(err);
-		return res.send({ status: '200', success:'Save good' });
+		return res.send({ status: '200', success:'Saved successfully' });
 	})
 });
 app.post('/api/user/delete/:id',function(req,res,next){
 	UserInfoModel.remove({_id:req.params.id},function(err,user){
 		if(err) return next(err);
-		return res.send({ status: '200', success:'Delete good' });
+		return res.send({ status: '200', success:'Deleted successfully' });
 	})
 });
 }
