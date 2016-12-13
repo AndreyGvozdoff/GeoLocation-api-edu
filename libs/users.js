@@ -5,21 +5,37 @@ const log         = require('./log')(module);
 var db = mongoose.connection;
 
 db.on('error', function (err) {
-    log.error('connection error:', err.message);
+	log.error('connection error:', err.message);
 });
 db.once('open', function callback () {
-    log.info("Connected to DB!");
+	log.info("Connected to DB!");
 });
 
 var Schema = mongoose.Schema;
 
 var Avatar = new Schema({
-    name: {
-        type: String,
-        enum: ['thumbnail', 'detail'],
-        required: true
-    },
-    url: { type: String, required: true }
+	name: {
+		type: String,
+		enum: ['thumbnail', 'detail'],
+		required: true
+	},
+	url: { type: String, required: true }
+});
+//Container Shipping
+var contTransport = new Schema({
+	country:{type:String,required: true},
+	city:{type:String,required: true},
+	lat:{type:String,required: true},
+	lng:{type:String,required: true},
+	ready:{type:Date,required: true},
+	line:{type:String,required: true},
+	conteiner:{type:String,required: true},
+	amount:{type:String,required: true},
+	note:{type:String,required: true},
+	statys:{type:String,required: true},
+	state:{type:String,required: true},
+	active:{type:String,required: true},
+	time:{type:Date,default: Date.now}
 });
 
 var UserInfo = new Schema({
@@ -30,6 +46,7 @@ var UserInfo = new Schema({
 	is_admin:{type:String,required:true},
 	hashedPassword:{type:String,required:true},
 	salt:{type:String,required:true},
+	cont_transport: [contTransport],
 	data_added:{type:Date,default:Date.now }
 });
 
