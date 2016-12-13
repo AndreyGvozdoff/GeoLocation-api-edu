@@ -1,4 +1,4 @@
-var UserInfoModel    = require('../libs/users').UserInfoModel;
+const UserInfoModel    = require('../libs/users').UserInfoModel;
 module.exports = function(app){
 
 app.get('/api/users',function(req,res,next){
@@ -20,7 +20,7 @@ app.post('/api/users',function(req,res,next){
 				
 			}else{
 				res.statusCode = 403;
-				return res.send({ error: 'Password nevernui' });
+				return res.send({ error: 'Incorrect Password' });
 			}			
 		}else{
 			res.statusCode = 404;

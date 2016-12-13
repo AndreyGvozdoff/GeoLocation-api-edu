@@ -1,4 +1,4 @@
-var winston = require('winston');
+const winston = require('winston');
 
 function getLogger(module) {
     var path = module.filename.split('/').slice(-2).join('/');

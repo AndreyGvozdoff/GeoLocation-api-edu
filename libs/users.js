@@ -1,6 +1,6 @@
-var crypto = require('crypto');
-var mongoose    = require('./connectMongoose');
-var log         = require('./log')(module);
+const crypto = require('crypto');
+const mongoose    = require('./connectMongoose');
+const log         = require('./log')(module);
 
 var db = mongoose.connection;
 

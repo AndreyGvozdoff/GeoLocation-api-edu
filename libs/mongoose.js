@@ -1,5 +1,5 @@
-var mongoose    = require('./connectMongoose');
-var log         = require('./log')(module);
+const mongoose    = require('./connectMongoose');
+const log         = require('./log')(module);
 
 
 var db = mongoose.connection;

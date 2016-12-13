@@ -1,4 +1,4 @@
-var UserInfoModel    = require('./libs/users').UserInfoModel;
+const UserInfoModel    = require('./libs/users').UserInfoModel;
 
 var user = new UserInfoModel({
 	username:'admin',

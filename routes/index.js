@@ -1,4 +1,4 @@
-var ArticleModel    = require('../libs/mongoose').ArticleModel;
+const ArticleModel    = require('../libs/mongoose').ArticleModel;
 module.exports = function(app){
 app.get('/api', function (req, res) {
     res.send('API is running');

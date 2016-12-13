@@ -1,9 +1,9 @@
-var express         = require('express');
-var path            = require('path');
-var config          = require('./libs/config');
-var log             = require('./libs/log')(module);
+const express         = require('express');
+const path            = require('path');
+const config          = require('./libs/config');
+const log             = require('./libs/log')(module);
 
-var app = express();
+const app = express();
 
 app.use(express.favicon());
 app.use(express.logger('dev'));
