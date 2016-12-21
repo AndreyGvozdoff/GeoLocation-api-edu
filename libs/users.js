@@ -1,3 +1,4 @@
+"use strict";
 const crypto = require('crypto');
 const mongoose    = require('./connectMongoose');
 const log         = require('./log')(module);
@@ -11,9 +12,9 @@ db.once('open', function callback () {
 	log.info("Connected to DB!");
 });
 
-let Schema = mongoose.Schema;
+var Schema = mongoose.Schema;
 
-let Avatar = new Schema({
+var Avatar = new Schema({
 	name: {
 		type: String,
 		enum: ['thumbnail', 'detail'],
@@ -22,7 +23,7 @@ let Avatar = new Schema({
 	url: { type: String, required: true }
 });
 //Container Shipping
-let contTransport = new Schema({
+var contTransport = new Schema({
 	country:{type:String,required: true},
 	city:{type:String,required: true},
 	lat:{type:String,required: true},
@@ -38,7 +39,7 @@ let contTransport = new Schema({
 	time:{type:Date,default: Date.now}
 });
 
-let UserInfo = new Schema({
+var UserInfo = new Schema({
 	username:{type:String,unique:true,required: true},
 	avatar:[Avatar],
 	phone:{type:String,required:true},
