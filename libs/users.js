@@ -2,7 +2,7 @@ const crypto = require('crypto');
 const mongoose    = require('./connectMongoose');
 const log         = require('./log')(module);
 
-var db = mongoose.connection;
+const db = mongoose.connection;
 
 db.on('error', function (err) {
 	log.error('connection error:', err.message);
@@ -11,9 +11,9 @@ db.once('open', function callback () {
 	log.info("Connected to DB!");
 });
 
-var Schema = mongoose.Schema;
+let Schema = mongoose.Schema;
 
-var Avatar = new Schema({
+let Avatar = new Schema({
 	name: {
 		type: String,
 		enum: ['thumbnail', 'detail'],
@@ -22,7 +22,7 @@ var Avatar = new Schema({
 	url: { type: String, required: true }
 });
 //Container Shipping
-var contTransport = new Schema({
+let contTransport = new Schema({
 	country:{type:String,required: true},
 	city:{type:String,required: true},
 	lat:{type:String,required: true},
@@ -38,7 +38,7 @@ var contTransport = new Schema({
 	time:{type:Date,default: Date.now}
 });
 
-var UserInfo = new Schema({
+let UserInfo = new Schema({
 	username:{type:String,unique:true,required: true},
 	avatar:[Avatar],
 	phone:{type:String,required:true},
@@ -63,6 +63,6 @@ UserInfo.virtual('password').set(function(password){
 UserInfo.methods.checkPassword=function(password){
 	return this.encryptPassword(password) === this.hashedPassword;
 };
-var UserInfoModel = mongoose.model('UserInfo', UserInfo);
+const UserInfoModel = mongoose.model('UserInfo', UserInfo);
 
 module.exports.UserInfoModel = UserInfoModel;
