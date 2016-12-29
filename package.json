@@ -7,11 +7,14 @@
   "scripts": {
     "start": "node ./server.js"
   },
-  "dependencies" : {
-    "express"  : "3.3.x",
-    "mongoose" : "3.6.x",
-    "nconf"    : "0.6.x",
-    "winston"  : "0.7.x"
+  "dependencies": {
+    "express": "3.3.x",
+    "mongoose": "3.6.x",
+    "nconf": "0.6.x",
+    "winston": "0.7.x"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^3.12.2"
+  }
 }

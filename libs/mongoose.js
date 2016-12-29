@@ -3,7 +3,7 @@ const mongoose    = require('./connectMongoose');
 const log         = require('./log')(module);
 
 
-var db = mongoose.connection;
+let db = mongoose.connection;
 
 db.on('error', function (err) {
     log.error('connection error:', err.message);

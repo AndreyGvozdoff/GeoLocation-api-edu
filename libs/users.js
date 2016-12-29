@@ -12,7 +12,7 @@ db.once('open', function callback () {
 	log.info("Connected to DB!");
 });
 
-var Schema = mongoose.Schema;
+let Schema = mongoose.Schema;
 
 var Avatar = new Schema({
 	name: {
