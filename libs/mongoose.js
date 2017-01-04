@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 const mongoose    = require('./connectMongoose');
 const log         = require('./log')(module);
 
@@ -9,7 +9,7 @@ db.on('error', function (err) {
     log.error('connection error:', err.message);
 });
 db.once('open', function callback () {
-    log.info("Connected to DB!");
+    log.info('Connected to DB!');
 });
 
 var Schema = mongoose.Schema;

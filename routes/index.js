@@ -5,7 +5,7 @@ module.exports = function (app) {
     });
 
 
-    app.get('/api/articles', function (req, res) {
+    app.get('/api/articles', function (req, res, log) {
         return ArticleModel.find(function (err, articles) {
             if (!err) {
                 return res.send(articles);
@@ -25,12 +25,11 @@ module.exports = function (app) {
             images: req.body.images
         });
 
-        article.save(function (err) {
+        article.save(function (err, log) {
             if (!err) {
                 log.info('Article created');
                 return res.send({status: 'OK', article: article});
             } else {
-                console.log(err);
                 if (err.name == 'ValidationError') {
                     res.statusCode = 400;
                     res.send({error: 'Validation error'});
@@ -43,7 +42,7 @@ module.exports = function (app) {
         });
     });
 
-    app.get('/api/articles/:id', function (req, res) {
+    app.get('/api/articles/:id', function (req, res, log) {
         return ArticleModel.findById(req.params.id, function (err, article) {
             if (!article) {
                 res.statusCode = 404;
@@ -59,7 +58,7 @@ module.exports = function (app) {
         });
     });
 
-    app.put('/api/articles/:id', function (req, res) {
+    app.put('/api/articles/:id', function (req, res, log) {
         return ArticleModel.findById(req.params.id, function (err, article) {
             if (!article) {
                 res.statusCode = 404;
@@ -88,7 +87,7 @@ module.exports = function (app) {
         });
     });
 
-    app.delete('/api/articles/:id', function (req, res) {
+    app.delete('/api/articles/:id', function (req, res, log) {
         return ArticleModel.findById(req.params.id, function (err, article) {
             if (!article) {
                 res.statusCode = 404;

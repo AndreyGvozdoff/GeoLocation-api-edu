@@ -5,7 +5,7 @@ module.exports = function (app) {
         UserInfoModel.find({}, function (err, users) {
             if (err) return next(err);
             res.json(users);
-        })
+        });
     });
     app.post('/api/users', function (req, res, next) {
         var username = req.query.username;
@@ -26,7 +26,7 @@ module.exports = function (app) {
                 res.statusCode = 404;
                 return res.send({error: 'User not found'});
             }
-        })
+        });
     });
 
     app.get('/api/user/:id', function (req, res, next) {
@@ -37,7 +37,7 @@ module.exports = function (app) {
                 return res.send({error: 'User not found'});
             }
             res.json(user);
-        })
+        });
     });
 
     app.post('/api/user/add', function (req, res, next) {
@@ -51,15 +51,15 @@ module.exports = function (app) {
             is_admin: req.query.is_admin
         });
 
-        user.save(function (err, user) {
+        user.save(function (err) {
             if (err) return next(err);
             return res.send({status: '200', success: 'Saved successfully'});
-        })
+        });
     });
     app.post('/api/user/delete/:id', function (req, res, next) {
-        UserInfoModel.remove({_id: req.params.id}, function (err, user) {
+        UserInfoModel.remove({_id: req.params.id}, function (err) {
             if (err) return next(err);
             return res.send({status: '200', success: 'Deleted successfully'});
-        })
+        });
     });
-}
+};
