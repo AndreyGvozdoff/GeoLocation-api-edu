@@ -72,7 +72,7 @@ module.exports = function (app) {
             article.images = req.body.images;
             return article.save(function (err) {
                 if (!err) {
-                    log.info("article updated");
+                    log.info('article updated');
                     return res.send({status: 'OK', article: article});
                 } else {
                     if (err.name == 'ValidationError') {
@@ -106,4 +106,4 @@ module.exports = function (app) {
             });
         });
     });
-}
+};

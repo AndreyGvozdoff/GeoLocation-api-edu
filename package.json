@@ -15,6 +15,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^3.12.2"
+    "eslint": "^3.12.2",
+    "scss-lint": "0.0.0"
   }
 }

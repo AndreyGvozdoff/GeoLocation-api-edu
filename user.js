@@ -1,6 +1,7 @@
+'use strict';
 const UserInfoModel = require('./libs/users').UserInfoModel;
 
-var user = new UserInfoModel({
+let user = new UserInfoModel({
     username: 'admin',
     avatar: {name: 'test', url: 'C:\\image.jpg'},
     phone: '+38099 999 99 99',
@@ -9,6 +10,6 @@ var user = new UserInfoModel({
     password: 'admin'
 });
 
-user.save(function (err, user, affected) {
+user.save(function (err) {
     if (err) throw err;
-})
+});
