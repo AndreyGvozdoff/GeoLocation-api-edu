@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 const ArticleModel = require('../libs/mongoose').ArticleModel;
 module.exports = function (app) {
     app.get('/api', function (req, res) {

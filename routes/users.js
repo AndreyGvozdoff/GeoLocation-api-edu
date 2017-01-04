@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 const UserInfoModel = require('../libs/users').UserInfoModel;
 module.exports = function (app) {
 
