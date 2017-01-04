@@ -3,8 +3,7 @@ module.exports = function (app) {
     app.get('/api', function (req, res) {
         res.send('API is running');
     });
-
-
+    
     app.get('/api/articles', function (req, res, log) {
         return ArticleModel.find(function (err, articles) {
             if (!err) {
