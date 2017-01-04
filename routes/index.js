@@ -1,3 +1,4 @@
+"use strict";
 const ArticleModel = require('../libs/mongoose').ArticleModel;
 module.exports = function (app) {
     app.get('/api', function (req, res) {
@@ -17,7 +18,7 @@ module.exports = function (app) {
     });
 
     app.post('/api/articles', function (req, res) {
-        var article = new ArticleModel({
+        let article = new ArticleModel({
             title: req.body.title,
             author: req.body.author,
             description: req.body.description,

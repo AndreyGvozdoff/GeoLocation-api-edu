@@ -1,3 +1,4 @@
+"use strict";
 const UserInfoModel = require('../libs/users').UserInfoModel;
 module.exports = function (app) {
 
@@ -42,7 +43,7 @@ module.exports = function (app) {
 
     app.post('/api/user/add', function (req, res, next) {
 
-        var user = new UserInfoModel({
+        let user = new UserInfoModel({
             username: req.query.username,
             password: req.query.password,
             phone: req.query.phone,
