@@ -28,7 +28,6 @@ app.use(function (err, req, res) {
     return;
 });
 
-
 app.get('/ErrorExample', function (req, res, next) {
     next(new Error('Random error!'));
 });

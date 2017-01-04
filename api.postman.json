@@ -1,0 +1,22 @@
+{
+  "variables": [],
+  "info": {
+    "name": "geolocation-api-create-new-collection",
+    "_postman_id": "32f84450-8df0-acfd-7855-9a1ff7c8b05b",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "http://localhost:1338/api",
+      "request": {
+        "url": "http://localhost:1338/api",
+        "method": "GET",
+        "header": [],
+        "body": {},
+        "description": ""
+      },
+      "response": []
+    }
+  ]
+}
