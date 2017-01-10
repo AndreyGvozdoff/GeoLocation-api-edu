@@ -3,9 +3,11 @@ const express = require('express');
 const path = require('path');
 const config = require('./libs/config');
 const log = require('./libs/log')(module);
+const oauth2 = require('./libs/oauth2');
 
 const app = express();
 
+app.use(passport.initialize());
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
@@ -36,3 +38,13 @@ app.get('/ErrorExample', function (req, res, next) {
 app.listen(config.get('port'), function () {
     log.info('Express server listening on port ' + config.get('port'));
 });
+
+require('./libs/auth');
+app.post('/oauth/token', oauth2.token);
+
+app.get('/api/userInfo',
+    passport.authenticate('bearer', { session: false }),
+    function(req, res) {
+        res.json({ user_id: req.user.userId, name: req.user.username, scope: req.authInfo.scope })
+    }
+);
