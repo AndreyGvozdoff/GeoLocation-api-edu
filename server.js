@@ -4,6 +4,7 @@ const path = require('path');
 const config = require('./libs/config');
 const log = require('./libs/log')(module);
 const oauth2 = require('./libs/oauth2');
+const passport = require('passport');
 
 const app = express();
 
@@ -45,6 +46,6 @@ app.post('/oauth/token', oauth2.token);
 app.get('/api/userInfo',
     passport.authenticate('bearer', { session: false }),
     function(req, res) {
-        res.json({ user_id: req.user.userId, name: req.user.username, scope: req.authInfo.scope })
+        res.json({ user_id: req.user.userId, name: req.user.username, scope: req.authInfo.scope });
     }
 );
