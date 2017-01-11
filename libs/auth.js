@@ -11,6 +11,7 @@ const config = require(libs + 'config');
 const User = require(libs + 'model/user');
 const Client = require(libs + 'model/client');
 const AccessToken = require(libs + 'model/accessToken');
+
 //const RefreshToken = require(libs + 'model/refreshToken');
 
 passport.use(new BasicStrategy(
