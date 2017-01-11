@@ -8,7 +8,8 @@ const libs = process.cwd() + '/libs/';
 
 const config = require(libs + 'config');
 
-const User = require(libs + 'model/user');
+// const User = require(libs + 'model/user');
+const User = require('./users');
 const Client = require(libs + 'model/client');
 const AccessToken = require(libs + 'model/accessToken');
 
