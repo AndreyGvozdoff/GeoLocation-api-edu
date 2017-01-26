@@ -29,7 +29,7 @@ app.post('/api/locations', function(req, res) {
         images: req.body.images
     });
 
-    location.save(function (err, log) {
+    location.save(function (err) {
         if (!err) {
             log.info("Location created");
             return res.send({ status: 'OK', location:location });
@@ -76,7 +76,7 @@ app.put('/api/locations/:id', function (req, res){
         location.lat = req.body.lat,
         location.lng = req.body.lng,
         location.images = req.body.images;
-        return location.save(function (err, log) {
+        return location.save(function (err) {
             if (!err) {
                 log.info("Location updated");
                 return res.send({ status: 'OK', location:location });
@@ -100,7 +100,7 @@ app.delete('/api/locations/:id', function (req, res){
             res.statusCode = 404;
             return res.send({ error: 'Not found' });
         }
-        return location.remove(function (err, log) {
+        return location.remove(function (err) {
             if (!err) {
                 log.info("Location removed");
                 return res.send({ status: 'OK' });
