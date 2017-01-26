@@ -3,7 +3,7 @@ const crypto = require('crypto');
 const mongoose    = require('./connectMongoose');
 const log         = require('./log')(module);
 
-var db = mongoose.connection;
+const db = mongoose.connection;
 
 db.on('error', function (err) {
     log.error('Connection error:', err.message);
