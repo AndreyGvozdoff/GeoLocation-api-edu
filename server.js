@@ -1,3 +1,4 @@
+//structure change, implement promises and remove callback, implement errors handller
 'use strict';
 const express         = require('express');
 const path            = require('path');

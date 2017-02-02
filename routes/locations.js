@@ -1,5 +1,6 @@
 'use strict';
 const LocationModel    = require('../libs/mongoose').LocationModel;
+const co = require('co');
 module.exports = function(app){
 app.get('/api', function (req, res) {
     res.send('API is running');
@@ -46,6 +47,21 @@ app.post('/api/locations', function(req, res) {
     });
 });
 
+app.get('/api/locations/:id', co.wrap(function * (req, res) {
+    try {
+        const location = yield LocationModel.findById(req.params.id);
+        if (!location) {
+            res.statusCode = 404;
+            return res.send({ error: 'Not found' });
+        }
+        return res.send({ status: 'OK', location:location });
+    } catch (e) {
+        res.statusCode = 500;
+        log.error('Internal error(%d): %s', res.statusCode, err.message);
+        return res.send({error: 'Server error'});
+    }
+}));
+    
 app.get('/api/locations/:id', function(req, res) {
     return LocationModel.findById(req.params.id, function (err, location) {
         if(!location) {
