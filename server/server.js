@@ -14,7 +14,7 @@ app.use(express.methodOverride());
 app.use(app.router);
 require('./routes/locations')(app);
 require('./routes/users')(app);
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "client")));
 
 app.use(function(req, res){
     res.status(404);

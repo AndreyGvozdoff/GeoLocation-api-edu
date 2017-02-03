@@ -1,16 +1,7 @@
 'use strict';
 const crypto = require('crypto');
-const mongoose    = require('./connectMongoose');
-const log         = require('./log')(module);
-
-const db = mongoose.connection;
-
-db.on('error', function (err) {
-    log.error('Connection error:', err.message);
-});
-db.once('open', function callback () {
-    log.info("Connected to DB!");
-});
+const mongoose    = require('./mongoose');
+const log         = require('./../libs/log')(module);
 
 const Schema = mongoose.Schema;
 
@@ -75,9 +66,6 @@ UserInfo.methods.checkPassword=function(password){
     return this.encryptPassword(password) === this.hashedPassword;
 };
 
-
-const LocationModel = mongoose.model('Location', Location);
 const UserInfoModel = mongoose.model('UserInfo', UserInfo);
 
-module.exports.LocationModel = LocationModel;
 module.exports.UserInfoModel = UserInfoModel;

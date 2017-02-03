@@ -1,5 +1,5 @@
 'use strict';
-const LocationModel    = require('../libs/mongoose').LocationModel;
+const LocationModel    = require('../db/mongoose').LocationModel;
 const co = require('co');
 module.exports = function(app){
 app.get('/api', function (req, res) {
