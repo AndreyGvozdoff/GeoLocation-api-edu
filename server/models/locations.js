@@ -1,6 +1,6 @@
 'use strict';
 const mongoose    = require('./mongoose');
-const log         = require('./../libs/log')(module);
+const log         = require('././log')(module);
 
 const db = mongoose.connection;
 

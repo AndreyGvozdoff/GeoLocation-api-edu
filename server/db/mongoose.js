@@ -1,7 +1,7 @@
 'use strict';
 const crypto = require('crypto');
 const mongoose    = require('./connectMongoose');
-const log         = require('././log')(module);
+const log         = require('../logs/log')(module);
 
 const db = mongoose.connection;
 

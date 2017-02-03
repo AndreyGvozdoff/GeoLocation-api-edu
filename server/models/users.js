@@ -1,7 +1,7 @@
 'use strict';
 const crypto = require('crypto');
 const mongoose    = require('./mongoose');
-const log         = require('./../libs/log')(module);
+const log         = require('././log')(module);
 
 const Schema = mongoose.Schema;
 

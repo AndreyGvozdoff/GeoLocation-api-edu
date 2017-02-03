@@ -2,8 +2,8 @@
 'use strict';
 const express         = require('express');
 const path            = require('path');
-const config          = require('./libs/config');
-const log             = require('./libs/log')(module);
+const config          = require('./config/config');
+const log             = require('./logs/log')(module);
 
 const app = express();
 
