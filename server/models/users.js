@@ -1,13 +1,13 @@
 'use strict';
 const crypto = require('crypto');
-const mongoose    = require('./mongoose');
-const log         = require('././log')(module);
+const mongoose    = require('../db/mongoose');
+const log         = require('../log')(module);
 
 const Schema = mongoose.Schema;
 
 // Schemas
 
-let Images = new Schema({
+var Images = new Schema({
     kind: {
         type: String,
         enum: ['thumbnail', 'detail'],
@@ -16,7 +16,7 @@ let Images = new Schema({
     url: { type: String, required: true }
 });
 
-let Location = new Schema({
+var Location = new Schema({
     title: { type: String, required: true },
     author: { type: String, required: true },
     adress: { type: String, required: true },
@@ -32,7 +32,7 @@ Location.path('title').validate(function (v) {
     return v.length > 5 && v.length < 70;
 });
 
-let Avatar = new Schema({
+var Avatar = new Schema({
     name: {
         type: String,
         enum: ['thumbnail', 'detail'],
@@ -41,7 +41,7 @@ let Avatar = new Schema({
     url: { type: String, required: true }
 });
 
-let UserInfo = new Schema({
+var UserInfo = new Schema({
     username:{type:String,unique:true,required: true},
     avatar:[Avatar],
     phone:{type:String,required:true},

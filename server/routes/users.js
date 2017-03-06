@@ -1,4 +1,5 @@
 'use strict';
+const crypto = require('crypto');
 const UserInfoModel    = require('../db/mongoose').UserInfoModel;
 module.exports = function(app){
 

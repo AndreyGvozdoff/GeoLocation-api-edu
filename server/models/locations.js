@@ -1,6 +1,6 @@
 'use strict';
-const mongoose    = require('./mongoose');
-const log         = require('././log')(module);
+const mongoose    = require('../db/mongoose');
+const log         = require('../log')(module);
 
 const db = mongoose.connection;
 
@@ -15,7 +15,7 @@ const Schema = mongoose.Schema;
 
 // Schemas
 
-let Images = new Schema({
+var Images = new Schema({
     kind: {
         type: String,
         enum: ['thumbnail', 'detail'],
@@ -24,7 +24,7 @@ let Images = new Schema({
     url: { type: String, required: true }
 });
 
-let Location = new Schema({
+var Location = new Schema({
     title: { type: String, required: true },
     author: { type: String, required: true },
     adress: { type: String, required: true },

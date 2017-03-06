@@ -6,21 +6,23 @@ app.get('/api', function (req, res) {
     res.send('API is running');
 });
 
-
-app.get('/api/location', function(req, res) {
-    return LocationModel.find(function (err, locations) {
-        if (!err) {
-            return res.send(locations);
-        } else {
+app.get('/api/locations', co.wrap(function * (req, res) {
+    try {
+        const location = yield LocationModel.findById(req.params.id);
+            if (!location) {
+                res.statusCode = 404;
+                return res.send({ error: 'Not found' });
+            }
+            return res.send({ status: 'OK', location:location });
+        } catch (e) {
             res.statusCode = 500;
-            log.error('Internal error(%d): %s',res.statusCode,err.message);
-            return res.send({ error: 'Server error' });
+            log.error('Internal error(%d): %s', res.statusCode, err.message);
+            return res.send({error: 'Server error'});
         }
-    });
-});
+}));
 
 app.post('/api/locations', function(req, res) {
-    let location = new LocationModel({
+    const location = new LocationModel({
         title: req.body.title,
         author: req.body.author,
         description: req.body.description,
