@@ -1,14 +1,23 @@
 'use strict';
 const crypto = require('crypto');
+const co = require('co');
 const UserInfoModel    = require('../db/mongoose').UserInfoModel;
 module.exports = function(app){
 
-app.get('/api/users',function(req,res,next){
-	UserInfoModel.find({},function(err,users){
-		if(err) return next(err);
-		res.json(users);
-	})
-});
+app.get('/api/users', co.wrap(function * (req, res) {
+	try {
+		const user = yield UserInfoModel.findById(req.params.id);
+            if (!user) {
+                res.statusCode = 404;
+                return res.send({ error: 'Not found' });
+            }
+            return res.send({ status: 'OK', user:user });
+        } catch (e) {
+            res.statusCode = 500;
+            log.error('Internal error(%d): %s', res.statusCode, err.message);
+            return res.send({error: 'Server error'});
+        }
+	}));
 app.post('/api/users',function(req,res,next){
 	var username = req.query.username;
 	var password = req.query.password;
