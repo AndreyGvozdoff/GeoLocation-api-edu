@@ -3,7 +3,7 @@ const crypto = require('crypto');
 const mongoose    = require('../db/mongoose');
 const log         = require('../log')(module);
 
-const Schema = mongoose.Schema;
+let Schema = mongoose.Schema;
 
 // Schemas
 

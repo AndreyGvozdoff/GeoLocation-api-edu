@@ -2,16 +2,7 @@
 const mongoose    = require('../db/mongoose');
 const log         = require('../log')(module);
 
-const db = mongoose.connection;
-
-db.on('error', function (err) {
-    log.error('Connection error:', err.message);
-});
-db.once('open', function callback () {
-    log.info("Connected to DB!");
-});
-
-const Schema = mongoose.Schema;
+let Schema = mongoose.Schema;
 
 // Schemas
 
