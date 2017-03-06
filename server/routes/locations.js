@@ -63,22 +63,6 @@ app.get('/api/locations/:id', co.wrap(function * (req, res) {
         return res.send({error: 'Server error'});
     }
 }));
-    
-app.get('/api/locations/:id', function(req, res) {
-    return LocationModel.findById(req.params.id, function (err, location) {
-        if(!location) {
-            res.statusCode = 404;
-            return res.send({ error: 'Not found' });
-        }
-        if (!err) {
-            return res.send({ status: 'OK', location:location });
-        } else {
-            res.statusCode = 500;
-            log.error('Internal error(%d): %s',res.statusCode,err.message);
-            return res.send({ error: 'Server error' });
-        }
-    });
-});
 
 app.put('/api/locations/:id', function (req, res){
     return LocationModel.findById(req.params.id, function (err, location) {
