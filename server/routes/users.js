@@ -1,7 +1,8 @@
 'use strict';
 const crypto = require('crypto');
 const co = require('co');
-const UserInfoModel    = require('../db/mongoose').UserInfoModel;
+const UserInfoModel = require('../models/users').UserInfoModel;
+const log = require('../log')(module);
 module.exports = function(app){
 
 app.get('/api/users', co.wrap(function * (req, res) {

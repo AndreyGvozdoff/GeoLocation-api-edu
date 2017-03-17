@@ -1,8 +1,7 @@
 'use strict';
 const mongoose    = require('../db/mongoose');
-const log         = require('../log')(module);
 
-let Schema = mongoose.Schema;
+var Schema = mongoose.Schema;
 
 // Schemas
 
