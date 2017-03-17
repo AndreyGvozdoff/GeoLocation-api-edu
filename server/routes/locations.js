@@ -9,7 +9,7 @@ app.get('/api', function (req, res) {
 
 app.get('/api/locations', co.wrap(function * (req, res) {
     try {
-        const location = yield LocationModel.findById(req.params.id);
+        const location = yield LocationModel.findById(req.params.id).exec();
             if (!location) {
                 res.statusCode = 404;
                 return res.send({ error: 'Not found' });
@@ -17,7 +17,7 @@ app.get('/api/locations', co.wrap(function * (req, res) {
             return res.send({ status: 'OK', location:location });
         } catch (e) {
             res.statusCode = 500;
-            log.error('Internal error(%d): %s', res.statusCode, err.message);
+            log.error('Internal error(%d): %s', res.statusCode, e.message);
             return res.send({error: 'Server error'});
         }
 }));
@@ -52,7 +52,7 @@ app.post('/api/locations', function(req, res) {
 
 app.get('/api/locations/:id', co.wrap(function * (req, res) {
     try {
-        const location = yield LocationModel.findById(req.params.id);
+        const location = yield LocationModel.findById(req.params.id).exec();
         if (!location) {
             res.statusCode = 404;
             return res.send({ error: 'Not found' });

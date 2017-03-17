@@ -7,7 +7,7 @@ module.exports = function(app){
 
 app.get('/api/users', co.wrap(function * (req, res) {
 	try {
-		const user = yield UserInfoModel.findById(req.params.id);
+		const user = yield UserInfoModel.findById(req.params.id).exec();
             if (!user) {
                 res.statusCode = 404;
                 return res.send({ error: 'Not found' });
@@ -15,7 +15,7 @@ app.get('/api/users', co.wrap(function * (req, res) {
             return res.send({ status: 'OK', user:user });
         } catch (e) {
             res.statusCode = 500;
-            log.error('Internal error(%d): %s', res.statusCode, err.message);
+            log.error('Internal error(%d): %s', res.statusCode, e.message);
             return res.send({error: 'Server error'});
         }
 	}));
