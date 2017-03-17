@@ -2,7 +2,9 @@
 const nconf = require('nconf');
 //
 nconf.argv()
-    .env()
-    .file({ file: './config.json' });
+    .env();
+['./server/config.json'].forEach(function(f, i) {
+    nconf.file(i, f);
+});
 
 module.exports = nconf;
